@@ -4,9 +4,9 @@ This repository contains micro tutorials. Step by step guides for building cloud
 
 ## Contents
 
-TODO
+TODO: add contents
 
-## Contribute
+## Contribute
 
 Contributions are welcome and expected.
 
