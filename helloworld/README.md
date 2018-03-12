@@ -57,7 +57,7 @@ You will need to install the following for protobuf code generation
 - [protoc-gen-go](https://github.com/golang/protobuf)
 - [protoc-gen-micro](https://github.com/micro/protoc-gen-micro)
 
-### Service Discovery
+### Service Discovery
 
 Go-micro uses service discovery to resolve names to addresses. [Consul](https://www.consul.io/) is the default.
 
