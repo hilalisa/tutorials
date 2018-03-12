@@ -10,10 +10,8 @@ The following dependencies are required
 
 ### Protobuf
 
-You will need to install the following for protobuf code generation
+Install protoc-gen-micro and it's dependencies for protobuf code generation
 
-- [protoc](https://github.com/google/protobuf)
-- [protoc-gen-go](https://github.com/golang/protobuf)
 - [protoc-gen-micro](https://github.com/micro/protoc-gen-micro)
 
 ### Service Discovery
