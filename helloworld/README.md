@@ -213,7 +213,7 @@ type GreeterHandler interface {
 Here's an implementation of the Greeter handler.
 
 ```go
-import proto "github.com/micro/examples/service/proto"
+import proto "github.com/micro/examples/helloworld/proto"
 
 type Greeter struct{}
 
@@ -262,7 +262,7 @@ import (
         "log"
 
         "github.com/micro/go-micro"
-        proto "github.com/micro/examples/service/proto"
+        proto "github.com/micro/examples/helloworld/proto"
 )
 
 type Greeter struct{}
@@ -327,5 +327,5 @@ fmt.Println(rsp.Greeter)
 
 ## Code
 
-The full example can be found at [examples/service](https://github.com/micro/examples/tree/master/service).
+The full example can be found at [examples/helloworld](https://github.com/micro/examples/tree/master/helloworld).
 
