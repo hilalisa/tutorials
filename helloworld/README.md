@@ -4,7 +4,7 @@ This guide teaches you how to write a [go-micro](https://github.com/micro/go-mic
 
 By the end you should have a working service and client.
 
-## TLDR
+## TLDR
 
 A hello world service looks like this
 
