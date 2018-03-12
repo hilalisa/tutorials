@@ -4,47 +4,6 @@ This guide teaches you how to write a [go-micro](https://github.com/micro/go-mic
 
 By the end you should have a working service and client.
 
-## TLDR
-
-A hello world service looks like this
-
-```go
-package main
-
-import (
-	"context" 
-	"log"
-
-	"github.com/micro/go-micro"
-	proto "github.com/micro/examples/service/proto"
-)
-
-type Greeter struct{}
-
-func (g *Greeter) Hello(ctx context.Context, req *proto.HelloRequest, rsp *proto.HelloResponse) error {
-	if len(req.Name) == 0 {
-		rsp.Greeting = "Hello World!"
-	} else { 
-		rsp.Greeting = "Hello " + req.Name
-	}
-	return nil
-}
-
-func main() {
-	service := micro.NewService(
-		micro.Name("greeter"),
-	)
-
-	service.Init()
-
-	proto.RegisterGreeterHandler(service.Server(), new(Greeter))
-
-	if err := service.Run(); err != nil {
-		log.Fatal(err)
-	}
-}
-```
-
 ## Dependencies
 
 The following dependencies are required
@@ -89,9 +48,9 @@ type Service interface {
 }
 ```
 
-### 1. Initialise Service
+### 1. Create a Service
 
-Create a service using `micro.NewService`.
+Create a service using `micro.NewService`
 
 ```go
 import (
@@ -301,12 +260,11 @@ greeter.go
 package main
 
 import (
+        "context"
         "log"
 
         "github.com/micro/go-micro"
         proto "github.com/micro/examples/service/proto"
-
-        "golang.org/x/net/context"
 )
 
 type Greeter struct{}
@@ -319,7 +277,6 @@ func (g *Greeter) Hello(ctx context.Context, req *proto.HelloRequest, rsp *proto
 func main() {
         service := micro.NewService(
                 micro.Name("greeter"),
-                micro.Version("latest"),
         )
 
         service.Init()
@@ -332,10 +289,21 @@ func main() {
 }
 ```
 
-Note. The service discovery mechanism will need to be running so the service can register to be discovered by clients and 
-other services. A quick getting started for that is [here](https://github.com/micro/go-micro#getting-started).
+## Call Service
 
-## Client
+### CLI
+
+Use the micro CLI to query the service
+
+```
+go get github.com/micro/micro
+```
+
+```
+micro query greeter Greeter.Hello '{"name": "john"}'
+```
+
+### Client
 
 The [client](https://godoc.org/github.com/micro/go-micro/client) package is used to query services. When you create a 
 Service, a Client is included which matches the initialised packages used by the server.
@@ -346,10 +314,8 @@ Querying the above service is as simple as the following.
 service := micro.NewService()
 service.Init()
 
-// create the greeter client using the service name and client
 greeter := proto.NewGreeterClient("greeter", service.Client())
 
-// request the Hello method on the Greeter handler
 rsp, err := greeter.Hello(context.TODO(), &proto.HelloRequest{
 	Name: "John",
 })
@@ -361,7 +327,7 @@ if err != nil {
 fmt.Println(rsp.Greeter)
 ```
 
-`proto.NewGreeterClient` takes the service name and the client used for making requests.
+## Code
 
 The full example can be found at [examples/service](https://github.com/micro/examples/tree/master/service).
 
