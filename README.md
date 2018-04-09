@@ -5,6 +5,7 @@ This repository contains micro tutorials. Step by step guides for building cloud
 ## Contents
 
 - [helloworld](helloworld) - Simple hello world service using go-micro
+- [shippy](shippy) - A 10 part series by @EwanValentine
 
 ## Contribute
 
