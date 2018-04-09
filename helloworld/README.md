@@ -154,29 +154,29 @@ type HelloResponse struct {
 
 // Client API for Greeter service
 
-type GreeterClient interface {
+type GreeterService interface {
 	Hello(ctx context.Context, in *HelloRequest, opts ...client.CallOption) (*HelloResponse, error)
 }
 
-type greeterClient struct {
+type greeterService struct {
 	c           client.Client
 	serviceName string
 }
 
-func NewGreeterClient(serviceName string, c client.Client) GreeterClient {
+func GreeterServiceClient(serviceName string, c client.Client) GreeterService {
 	if c == nil {
 		c = client.NewClient()
 	}
 	if len(serviceName) == 0 {
 		serviceName = "greeter"
 	}
-	return &greeterClient{
+	return &greeterService{
 		c:           c,
 		serviceName: serviceName,
 	}
 }
 
-func (c *greeterClient) Hello(ctx context.Context, in *HelloRequest, opts ...client.CallOption) (*HelloResponse, error) {
+func (c *greeterService) Hello(ctx context.Context, in *HelloRequest, opts ...client.CallOption) (*HelloResponse, error) {
 	req := c.c.NewRequest(c.serviceName, "Greeter.Hello", in)
 	out := new(HelloResponse)
 	err := c.c.Call(ctx, req, out, opts...)
@@ -312,7 +312,7 @@ Querying the above service is as simple as the following.
 service := micro.NewService()
 service.Init()
 
-greeter := proto.NewGreeterClient("greeter", service.Client())
+greeter := proto.GreeterServiceClient("greeter", service.Client())
 
 rsp, err := greeter.Hello(context.TODO(), &proto.HelloRequest{
 	Name: "John",
