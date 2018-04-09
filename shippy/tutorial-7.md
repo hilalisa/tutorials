@@ -1,4 +1,4 @@
-# Microservices with Golang and Micro - Part 7
+# Microservices with Golang and Micro - Part 7
 
 In the [previous post](https://ewanvalentine.io/microservices-in-golang-part-6/), we touched briefly on user interfaces and web clients and how to interact with our newly created rpc services using the micro toolkits rpc proxy.
 

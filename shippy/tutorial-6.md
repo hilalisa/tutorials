@@ -1,4 +1,4 @@
-# Microservices with Golang and Micro - Part 6
+# Microservices with Golang and Micro - Part 6
 
 [In the previous post](http://ewanvalentine.io/microservices-in-golang-part-5) we looked at some of the various approaches to event-driven architecture in go-micro and in go in general. This part, we're going to delve into the client side and take a look at how we can create web clients which interact with our platform.
 

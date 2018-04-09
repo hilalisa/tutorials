@@ -1,4 +1,4 @@
-# Microservices with Golang and Micro - Part 8
+# Microservices with Golang and Micro - Part 8
 
 In the [previous post](https://ewanvalentine.io/microservices-in-golang-part-7/) we looked at creating a container engine cluster with [Terraform](https://terraform.io). In this post, we'll look at deploying containers into our cluster using Container Engine and [Kubernetes](https://kubernetes.io/).
 

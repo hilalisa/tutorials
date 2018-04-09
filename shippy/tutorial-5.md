@@ -1,4 +1,4 @@
-# Microservices with Golang and Micro - Part 5
+# Microservices with Golang and Micro - Part 5
 
 In the [previous part in this series](https://ewanvalentine.io/microservices-in-golang-part-4/), we touched upon user authentication and JWT. In this episode, we'll take a quick look at the go-micro's broker functionality and even brokering.
 
