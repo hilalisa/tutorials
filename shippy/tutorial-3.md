@@ -301,7 +301,7 @@ func main() {
 		micro.Version("latest"),
 	)
 
-	vesselClient := vesselProto.NewVesselServiceClient("go.micro.srv.vessel", srv.Client())
+	vesselClient := vesselProto.NewVesselService("go.micro.srv.vessel", srv.Client())
 
 	// Init will parse the command line flags.
 	srv.Init()
@@ -345,7 +345,7 @@ import (
 // in the generated code itself for the exact method signatures etc
 // to give you a better idea.
 type service struct {
-	vesselClient vesselProto.VesselServiceClient
+	vesselClient vesselProto.NewVesselService
 }
 
 func (s *service) GetRepo() Repository {
@@ -759,7 +759,7 @@ func main() {
 	cmd.Init()
 
 	// Create new greeter client
-	client := pb.NewUserServiceClient("go.micro.srv.user", microclient.DefaultClient)
+	client := pb.NewUserService("go.micro.srv.user", microclient.DefaultClient)
 
     // Define our flags
 	service := micro.NewService(

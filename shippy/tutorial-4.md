@@ -203,7 +203,7 @@ func main() {
 	// Init will parse the command line flags.
 	srv.Init()
 
-	client := pb.NewUserServiceClient("go.micro.srv.user", microclient.DefaultClient)
+	client := pb.NewUserService("go.micro.srv.user", microclient.DefaultClient)
 
 	name := "Ewan Valentine"
 	email := "ewan.valentine89@gmail.com"
@@ -258,7 +258,7 @@ func main() {
 	cmd.Init()
 
 	// Create new greeter client
-	client := pb.NewShippingServiceClient("go.micro.srv.consignment", microclient.DefaultClient)
+	client := pb.NewShippingService("go.micro.srv.consignment", microclient.DefaultClient)
 
 	// Contact the server and print out its response.
 	file := defaultFilename
@@ -341,7 +341,7 @@ func AuthWrapper(fn server.HandlerFunc) server.HandlerFunc {
 		log.Println("Authenticating with token: ", token)
 
 		// Auth here
-		authClient := userService.NewUserServiceClient("go.micro.srv.user", client.DefaultClient)
+		authClient := userService.NewUserService("go.micro.srv.user", client.DefaultClient)
 		_, err := authClient.ValidateToken(context.Background(), &userService.Token{
 			Token: token,
 		})
