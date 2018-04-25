@@ -163,7 +163,7 @@ type greeterService struct {
 	serviceName string
 }
 
-func GreeterServiceClient(serviceName string, c client.Client) GreeterService {
+func NewGreeterService(serviceName string, c client.Client) GreeterService {
 	if c == nil {
 		c = client.NewClient()
 	}
@@ -312,7 +312,7 @@ Querying the above service is as simple as the following.
 service := micro.NewService()
 service.Init()
 
-greeter := proto.GreeterServiceClient("greeter", service.Client())
+greeter := proto.NewGreeterService("greeter", service.Client())
 
 rsp, err := greeter.Hello(context.TODO(), &proto.HelloRequest{
 	Name: "John",
